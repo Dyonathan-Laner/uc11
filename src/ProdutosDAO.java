@@ -7,36 +7,36 @@
  *
  * @author Adm
  */
-
 import java.sql.PreparedStatement;
-import java.sql.Connection;
-import javax.swing.JOptionPane;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
 public class ProdutosDAO {
-    
-    Connection conn;
-    PreparedStatement prep;
-    ResultSet resultset;
-    ArrayList<ProdutosDTO> listagem = new ArrayList<>();
-    
-    public void cadastrarProduto (ProdutosDTO produto){
-        
-        
-        //conn = new conectaDAO().connectDB();
-        
-        
-    }
-    
-    public ArrayList<ProdutosDTO> listarProdutos(){
-        
-        return listagem;
-    }
-    
-    
-    
-        
-}
 
+    public boolean insert(ProdutosDTO P) {
+
+        Conexao C = new Conexao();
+        try {
+
+            PreparedStatement PS = C.Conectar().prepareStatement("insert into produtos(nome,valor,status)values(?,?,?)");
+            PS.setString(1, P.getNome());
+            PS.setInt(2, P.getValor());
+            PS.setString(3, P.getStatus());
+            
+            PS.executeUpdate();
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("não foi possivel cadastrar");
+            return false;
+        } finally {
+            C.Desconectar();
+        }
+
+    }
+
+    public ArrayList<ProdutosDTO> listarProdutos() {
+
+        
+    }
+
+}
