@@ -8,11 +8,13 @@
  * @author Adm
  */
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProdutosDAO {
 
-    public boolean insert(ProdutosDTO P) {
+    public static boolean insert(ProdutosDTO P) {
 
         Conexao C = new Conexao();
         try {
@@ -33,10 +35,28 @@ public class ProdutosDAO {
         }
 
     }
-
-    public ArrayList<ProdutosDTO> listarProdutos() {
-
+    public static List<ProdutosDTO> Select (){
+        Conexao C = new Conexao();
+        try{
+            PreparedStatement ST = C.Conectar().prepareStatement("SELECT * FROM produtos");
+            ResultSet rs = ST.executeQuery();
+            
+            List<ProdutosDTO> lista = new ArrayList<ProdutosDTO>();
         
+            while(rs.next()){
+            ProdutosDTO P = new ProdutosDTO();
+                P.setId(rs.getInt("id"));
+                P.setNome(rs.getString("nome"));
+                P.setStatus(rs.getString("status"));
+                P.setValor(rs.getInt("valor"));
+                
+                lista.add(P);
+            }
+            return lista;
+        }catch(Exception e){
+            System.out.println("Erro ao montar tabela");
+            return null;
+        }finally{C.Desconectar();}
     }
 
 }
