@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -202,13 +203,13 @@ public class listagemVIEW extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void listarProdutos(){
-        try {
+        
             ProdutosDAO produtosdao = new ProdutosDAO();
             
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
             
-            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
+            List<ProdutosDTO> listagem = ProdutosDAO.Select();
             
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
@@ -218,8 +219,7 @@ public class listagemVIEW extends javax.swing.JFrame {
                     listagem.get(i).getStatus()
                 });
             }
-        } catch (Exception e) {
-        }
+            listaProdutos.setModel(model);
     
     }
 }
