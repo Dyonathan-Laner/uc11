@@ -58,5 +58,18 @@ public class ProdutosDAO {
             return null;
         }finally{C.Desconectar();}
     }
-
+    public static boolean VenderProduto(int id){
+        Conexao C = new Conexao();
+        try{
+            PreparedStatement st = C.Conectar().prepareStatement("Update produtos set status='Vendido' where id = ?");
+            st.setInt(1, id);
+            
+            st.executeUpdate();
+        return true;
+        }catch(Exception e){
+            System.out.println("Erro ao vender Produto");
+            return false;
+        }finally{C.Desconectar();}
+        
+    }
 }
