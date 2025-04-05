@@ -72,4 +72,29 @@ public class ProdutosDAO {
         }finally{C.Desconectar();}
         
     }
+    public static List<ProdutosDTO> PVendidos (){
+        Conexao C = new Conexao();
+        try{
+            PreparedStatement ST = C.Conectar().prepareStatement("SELECT * FROM produtos where status = 'Vendido'");
+            ResultSet rs = ST.executeQuery();
+            
+            List<ProdutosDTO> lista = new ArrayList<ProdutosDTO>();
+        
+            while(rs.next()){
+            ProdutosDTO P = new ProdutosDTO();
+                P.setId(rs.getInt("id"));
+                P.setNome(rs.getString("nome"));
+                P.setStatus(rs.getString("status"));
+                P.setValor(rs.getInt("valor"));
+                
+                lista.add(P);
+            }
+            return lista;
+        }catch(Exception e){
+            System.out.println("Erro ao montar tabela");
+            return null;
+        }finally{C.Desconectar();}
+    }
+
+
 }
