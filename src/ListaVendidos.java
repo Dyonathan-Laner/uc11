@@ -21,7 +21,8 @@ public class ListaVendidos extends javax.swing.JFrame {
         btn_voltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         tbl_vendidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,7 +75,8 @@ public class ListaVendidos extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(565, 464));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed

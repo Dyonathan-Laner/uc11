@@ -39,7 +39,8 @@ public class cadastroVIEW extends javax.swing.JFrame {
         btnProdutos = new javax.swing.JButton();
         lbl_resp = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 0, 24)); // NOI18N
         jLabel1.setText("Sistema de Leilões");
@@ -139,7 +140,8 @@ public class cadastroVIEW extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(562, 518));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroNomeActionPerformed
